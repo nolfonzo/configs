@@ -102,8 +102,8 @@ alias h="history" # last 10 history commands #show
 alias hc="history -c" # clear history #show
 alias hg="history | grep " # +command #show
 alias sz="source ~/.zshrc" #show
-alias vz="vim ~/.zsh/.zshrc" #show
-alias cz="cat ~/.zsh/.zshrc | \\grep \#show" #show
+alias vz="vim ~/.config/zsh/.zshrc" #show
+alias cz="cat ~/.config/zsh/.zshrc | \\grep \#show" #show
 alias dirs="dirs -p"
 
 ddl=/Users/nolfonzo/Downloads #show
