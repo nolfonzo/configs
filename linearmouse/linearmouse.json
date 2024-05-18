@@ -1,0 +1,54 @@
+{
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.8.0",
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "productName" : "G203 LIGHTSYNC Gaming Mouse",
+          "serialNumber" : "2067306E4B32",
+          "productID" : "0xc092",
+          "category" : "mouse",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      }
+    },
+    {
+      "pointer" : {
+        "acceleration" : 0.2053,
+        "speed" : 0.02
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Magic Mouse",
+          "serialNumber" : "08-65-18-af-ae-eb",
+          "productID" : "0x269",
+          "category" : "mouse",
+          "vendorID" : "0x4c"
+        }
+      },
+      "scrolling" : {
+        "speed" : {
+          "vertical" : 0
+        },
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "modifiers" : {
+          "vertical" : {
+            "command" : {
+              "type" : "none"
+            }
+          }
+        },
+        "distance" : {
+          "vertical" : "auto"
+        }
+      }
+    }
+  ]
+}
