@@ -225,12 +225,12 @@ fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 
 " Web
 filetype {*.xhtml,*.html,*.htm},<text/html>
+       \ {Open in Chrome}
+       \ open -a Google\ Chrome.app,
        \ {Open in Safari}
        \ open -a Safari.app,
        \ {Open in Firefox}
        \ open -a Firefox.app,
-       \ {Open in Chrome}
-       \ open -a Google\ Chrome.app,
        \ {Open in vim}
        \ vim,
 fileviewer {*.xhtml,*.html,*.htm},<text/html> w3m -dump -T text/html
@@ -473,3 +473,11 @@ nnoremap yn :!echo -n %c | pbcopy %i<cr>:echo expand('%"c') "is yanked to clipbo
 nnoremap yr :!echo -n %c:r | pbcopy %i<cr>:echo expand('%"c:r') "is yanked to clipboard"<cr>
 set dotfiles
 :split
+
+" use fzf to fuzzy search and run file
+command! FZFfind : set noquickview
+                \| let $FZF_PICK = term('find ./* | fzf --height 10 2>/dev/tty')
+                \| if $FZF_PICK != ''
+                \|     execute 'goto' fnameescape($FZF_PICK)
+                \| endif
+nnoremap \ :FZFfind<cr>

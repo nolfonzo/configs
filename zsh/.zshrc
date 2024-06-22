@@ -163,3 +163,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 #
 conda activate pi
+
+if [[ $(mount | grep -c /Users/nolfonzo/nolfqnap2-mount-point) -lt 1 ]]; then
+  sshfs nolfonzo@nolfqnap2.local:/ nolfqnap2-mount-point
+fi
