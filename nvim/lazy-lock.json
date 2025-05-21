@@ -1,46 +1,14 @@
 {
-  "catppuccin": {
-    "branch": "main",
-    "commit": "d97387aea8264f484bb5d5e74f2182a06c83e0d8"
-  },
-  "lazy.nvim": {
-    "branch": "main",
-    "commit": "8f19915175395680808de529e4220da8dafc0759"
-  },
-  "lualine.nvim": {
-    "branch": "master",
-    "commit": "0a5a66803c7407767b799067986b4dc3036e1983"
-  },
-  "markdown-preview.nvim": {
-    "branch": "master",
-    "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee"
-  },
-  "nvim-tree.lua": {
-    "branch": "master",
-    "commit": "78c4c083ed5d47e7fab7627d78ce33d3bcfb88f0"
-  },
-  "nvim-web-devicons": {
-    "branch": "master",
-    "commit": "5b9067899ee6a2538891573500e8fd6ff008440f"
-  },
-  "oil.nvim": {
-    "branch": "master",
-    "commit": "010b44a79d497c697686e2727049d3dd215bbbd6"
-  },
-  "plenary.nvim": {
-    "branch": "master",
-    "commit": "08e301982b9a057110ede7a735dd1b5285eb341f"
-  },
-  "telescope.nvim": {
-    "branch": "master",
-    "commit": "6312868392331c9c0f22725041f1ec2bef57c751"
-  },
-  "tokyonight.nvim": {
-    "branch": "main",
-    "commit": "67afeaf7fd6ebba000633e89f63c31694057edde"
-  },
-  "which-key.nvim": {
-    "branch": "main",
-    "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a"
-  }
+  "catppuccin": { "branch": "main", "commit": "1bf070129c0b6f77cc23f6a2212dcdc868308c52" },
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "lualine.nvim": { "branch": "master", "commit": "15884cee63a8c205334ab13ab1c891cd4d27101a" },
+  "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
+  "nvim-tree.lua": { "branch": "master", "commit": "be5b788f2dc1522c73fb7afad9092331c8aebe80" },
+  "nvim-treesitter": { "branch": "master", "commit": "066fd6505377e3fd4aa219e61ce94c2b8bdb0b79" },
+  "nvim-web-devicons": { "branch": "master", "commit": "1fb58cca9aebbc4fd32b086cb413548ce132c127" },
+  "oil.nvim": { "branch": "master", "commit": "685cdb4ffa74473d75a1b97451f8654ceeab0f4a" },
+  "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
+  "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
+  "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },
+  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }

@@ -1,4 +1,4 @@
-# Common recent settings file for Wireshark 4.0.7.
+# Common recent settings file for Wireshark 4.2.5.
 #
 # This file is regenerated each time Wireshark is quit
 # and when changing configuration profile.
@@ -7,7 +7,7 @@
 ######## Recent capture files (latest last), cannot be altered through command line ########
 
 
-######## Recent capture filters (latest last), cannot be altered through command line ########
+######## Recent capture filters (latest first), cannot be altered through command line ########
 
 
 ######## Recent display filters (latest last), cannot be altered through command line ########
@@ -17,8 +17,8 @@
 # Decimal numbers.
 gui.geometry_main_x: 226
 gui.geometry_main_y: 205
-gui.geometry_main_width: 798
-gui.geometry_main_height: 555
+gui.geometry_main_width: 1693
+gui.geometry_main_height: 809
 
 # Main window maximized.
 # TRUE or FALSE (case-insensitive).
@@ -27,14 +27,6 @@ gui.geometry_main_maximized: FALSE
 # Leftalign Action Buttons.
 # TRUE or FALSE (case-insensitive).
 gui.geometry_leftalign_actions: FALSE
-
-# Statusbar left pane size.
-# Decimal number.
-gui.geometry_status_pane: 250
-
-# Statusbar middle pane size.
-# Decimal number.
-gui.geometry_status_pane_right: 250
 
 # Last used Configuration Profile.
 gui.last_used_profile: Default
