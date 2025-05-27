@@ -481,3 +481,4 @@ command! FZFfind : set noquickview
                 \|     execute 'goto' fnameescape($FZF_PICK)
                 \| endif
 nnoremap \ :FZFfind<cr>
+

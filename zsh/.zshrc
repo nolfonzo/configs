@@ -112,6 +112,7 @@ ddc=/Users/nolfonzo/Documents #show
 dtv="/Volumes/nolfonzo/Plex/Shared TV Shows" #show
 dmo="/Volumes/nolfonzo/Plex/Shared Movies" #show
 
+export FZF_DEFAULT_OPTS="--bind 'ctrl-y:execute-silent(dirname {} | pbcopy)'"
 
 # User configuration
 
