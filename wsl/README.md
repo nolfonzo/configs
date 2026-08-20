@@ -7,6 +7,7 @@ identical whether accessed locally at the machine or over SSH from the MacBook.
 - **`.zshrc`** — zsh + oh-my-zsh + Powerlevel10k (lean), plugins, an fzf tmux session chooser, and an `LS_COLORS` fix.
 - **`.p10k.zsh`** — Powerlevel10k **lean** style (single-line, no inverted blocks).
 - **`.tmux.conf`** — truecolor + a flat Gruvbox status bar.
+- **`setup.sh`** — one-shot bootstrap for a fresh box: packages, oh-my-zsh, theme, plugins, and these configs. Idempotent.
 - **`reference/`** — the matching Mac Ghostty theme line and the Windows Terminal Gruvbox scheme.
 
 ## Look & feel
@@ -23,7 +24,20 @@ identical whether accessed locally at the machine or over SSH from the MacBook.
 - **Session chooser:** on an interactive login (not already inside tmux), `.zshrc` shows an fzf menu:
   `＋ new session` (default — Enter/Esc), any existing sessions to attach, or `✗ no tmux`.
   Bypass entirely with `NO_TMUX=1`.
-- **Switch sessions from inside tmux:** `Ctrl-b s` (chooser), `Ctrl-b (` / `Ctrl-b )` (prev/next), `Ctrl-b L` (last).
+- **Prefix is `Ctrl-a`**, not tmux's default `Ctrl-b` (screen-style, and adjacent to the Caps Lock->Ctrl remap).
+  `Ctrl-a Ctrl-a` sends a literal prefix through — useful for beginning-of-line in readline, or for a nested tmux.
+- **Switch sessions from inside tmux:** `Ctrl-a s` (chooser), `Ctrl-a (` / `Ctrl-a )` (prev/next), `Ctrl-a L` (last).
+
+## Clipboard (one clipboard, not two)
+
+With `mouse on`, tmux captures mouse selection and copies into its **own** buffer stack — nothing
+reaches the system clipboard, so pasting elsewhere silently gives you whatever was last copied by a
+normal app. `set -g set-clipboard on` plus `set -as terminal-features ",*:clipboard"` makes tmux emit
+**OSC 52** so its copies land in the real clipboard.
+
+The outer terminal must also permit OSC 52 writes. Windows Terminal allows this by default
+(`compatibility.allowOSC52`). If it is ever disabled, Shift+drag bypasses tmux's mouse handling and
+lets the terminal do a native selection instead.
 
 ## `ls` colors
 WSL marks everything on the Windows filesystem (`/mnt/c/...`) world-writable, which `ls` renders with an

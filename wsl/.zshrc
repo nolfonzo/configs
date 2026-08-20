@@ -188,3 +188,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # ls inverted-color fix: no green/blue background for world-writable dirs (WSL /mnt)
 [ -z "$LS_COLORS" ] && eval "$(dircolors -b)"
 export LS_COLORS="${LS_COLORS}:ow=01;34:tw=01;34:st=01;34"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
