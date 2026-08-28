@@ -123,9 +123,28 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
 alias vi="nvim"
+
+# Modern CLI tool aliases
+alias cat="bat --paging=never"
+alias ls="eza --icons"
+alias ll="eza -la --icons --git"
+alias lt="eza --tree --level=2 --icons"
+alias lg="lazygit"
+alias top="btop"
+
+# 24/7 Homelab Taskwarrior integration (synced with Telegram bot)
+task() {
+    ssh -q -t nolfonzo@100.107.31.26 "docker exec -it -u 1001 nodered env TASKRC=/data/.taskrc task $*"
+}
+alias tasks="task"
+
+# Google Calendar CLI shortcuts
+alias cal="gcalcli calw"
+alias calm="gcalcli calm"
+alias agenda="gcalcli agenda"
+
 #
 # Pyenv Configuration
 export PYENV_ROOT="$HOME/.pyenv"
@@ -194,3 +213,14 @@ export PATH="$HOME/.grok/bin:$PATH"
 fpath=(~/.grok/completions/zsh $fpath)
 autoload -Uz compinit && compinit -C
 # <<< grok installer <<<
+
+# --- zoxide (smart directory jumper) ---
+eval "$(/home/linuxbrew/.linuxbrew/bin/zoxide init zsh)"
+
+# --- fzf + fd + bat integration ---
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --preview 'bat --style=numbers --color=always --line-range :500 {} 2>/dev/null || cat {}'"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {} 2>/dev/null || cat {}'"
+export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} 2>/dev/null | head -200 || ls -la {}'"
