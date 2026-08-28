@@ -25,7 +25,8 @@ identical whether accessed locally at the machine or over SSH from the MacBook.
   `＋ new session` (default — Enter/Esc), any existing sessions to attach, or `✗ no tmux`.
   Bypass entirely with `NO_TMUX=1`.
 - **Prefix is `Ctrl-a`**, not tmux's default `Ctrl-b` (screen-style, and adjacent to the Caps Lock->Ctrl remap).
-  `Ctrl-a Ctrl-a` sends a literal prefix through — useful for beginning-of-line in readline, or for a nested tmux.
+  `Ctrl-a a` sends a literal prefix through — useful for beginning-of-line in readline, or for a nested tmux.
+  `Ctrl-a Ctrl-a` is **last-window** (double-tap to bounce between the two most recent windows).
 - **Switch sessions from inside tmux:** `Ctrl-a s` (chooser), `Ctrl-a (` / `Ctrl-a )` (prev/next), `Ctrl-a L` (last).
 
 ## Clipboard (one clipboard, not two)
@@ -44,7 +45,11 @@ WSL marks everything on the Windows filesystem (`/mnt/c/...`) world-writable, wh
 ugly green background. `.zshrc` overrides `LS_COLORS` so other-writable/sticky dirs render as normal blue.
 
 ## Access from the MacBook
-- WSL runs a Tailscale node but Tailscale-in-WSL is flaky (MTU); reach it via the **Windows** Tailscale node instead.
+- WSL runs its own Tailscale node (`minipc-wsl`) with sshd on **port 2222** — `ssh -p 2222 nolfonzo@minipc-wsl`
+  works directly and is the simplest route. An earlier MTU problem made this unreliable; it is currently fine.
+- Fallback if the WSL node misbehaves: go via the **Windows** node (`minipc`, port 22) with `RemoteCommand wsl`.
+  Note Windows OpenSSH runs `cmd.exe`, so `ssh-copy-id` fails against it (`'exec' is not recognized`) — an admin
+  account's key must be placed in `C:\ProgramData\ssh\administrators_authorized_keys`, not `~/.ssh/authorized_keys`.
 - `~/.ssh/config` (not in this public repo): `Host wsl` → `HostName <windows-tailscale-ip>`, `RequestTTY yes`,
   `RemoteCommand wsl`, `SetEnv TERM=xterm-256color`. Then `ssh wsl` drops straight into WSL.
 - Mac alias: `alias wsl='ssh wsl'`.

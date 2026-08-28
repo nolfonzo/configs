@@ -152,7 +152,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 
-export PATH="/home/nolfonzo/.local/bin:$PATH"
 
 # SSH with FZF
 function s() {
@@ -170,7 +169,6 @@ function v() {
     nvim "$file"
   fi
 }
-eval "$(zoxide init zsh)"
 
 # Custom Prompt: Hostname + RobbyRussell Arrow logic
 # disabled-for-p10k PROMPT='%{$fg[yellow]%}%n@%m %{$reset_color%}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
@@ -193,7 +191,6 @@ bindkey "^[[B" down-line-or-beginning-search
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PATH=$PATH:/snap/bin
-export PATH=/opt/zig:$PATH
 export PATH=/opt/zig:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 
