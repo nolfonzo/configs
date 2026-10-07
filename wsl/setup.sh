@@ -30,7 +30,13 @@ sudo apt-get update -qq
 sudo apt-get install -y -qq \
   zsh tmux git curl wget neovim \
   fzf ripgrep fd-find zoxide \
+  bat eza btop lazygit git-delta \
   xauth                      # needed for `ssh -X` GUI forwarding
+# Ubuntu ships bat and fd as batcat and fdfind; .zshrc and the fzf settings
+# call them by their upstream names.
+mkdir -p "$HOME/.local/bin"
+command -v bat >/dev/null || ln -sf "$(command -v batcat)" "$HOME/.local/bin/bat"
+command -v fd  >/dev/null || ln -sf "$(command -v fdfind)" "$HOME/.local/bin/fd"
 echo "   done"
 
 say "oh-my-zsh"
@@ -72,6 +78,10 @@ cat <<'DONE'
    - Nerd Font is a CLIENT-side setting. Install one in your terminal app
      (Windows Terminal / Ghostty / iTerm), not on this machine.
    - tmux prefix is Ctrl+a, not the default Ctrl+b.
+   - LazyVim needs nvim 0.11+. Older Ubuntu's apt neovim is too old; use the
+     official release tarball in /opt (minipc-wsl runs Homebrew's 0.12.4).
+   - yazi is not in apt: use the release zip from github.com/sxyazi/yazi.
+   - Per-machine aliases go in ~/.zshrc.local, which .zshrc sources last.
    - If tmux copy does not reach the system clipboard, the terminal must
      allow OSC 52 writes. Windows Terminal allows it by default
      (compatibility.allowOSC52).

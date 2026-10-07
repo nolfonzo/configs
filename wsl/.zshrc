@@ -1,3 +1,7 @@
+# Windows Terminal / WSL: Grok and truecolor themes need this. Set it before the
+# tmux chooser so a new tmux server inherits it.
+export COLORTERM=truecolor
+
 # --- tmux session chooser on interactive login (skipped inside tmux / NO_TMUX=1) ---
 if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [ -z "$NO_TMUX" ] && [[ -o interactive ]]; then
   if command -v fzf >/dev/null 2>&1; then
@@ -149,9 +153,10 @@ alias agenda="gcalcli agenda"
 # Pyenv Configuration
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
 
+export PATH="/home/nolfonzo/.local/bin:$PATH"
 
 # SSH with FZF
 function s() {
@@ -169,6 +174,7 @@ function v() {
     nvim "$file"
   fi
 }
+eval "$(zoxide init zsh)"
 
 # Custom Prompt: Hostname + RobbyRussell Arrow logic
 # disabled-for-p10k PROMPT='%{$fg[yellow]%}%n@%m %{$reset_color%}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
@@ -188,9 +194,10 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PATH=$PATH:/snap/bin
+export PATH=/opt/zig:$PATH
 export PATH=/opt/zig:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -212,7 +219,7 @@ autoload -Uz compinit && compinit -C
 # <<< grok installer <<<
 
 # --- zoxide (smart directory jumper) ---
-eval "$(/home/linuxbrew/.linuxbrew/bin/zoxide init zsh)"
+[[ -x /home/linuxbrew/.linuxbrew/bin/zoxide ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/zoxide init zsh)"
 
 # --- fzf + fd + bat integration ---
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
@@ -221,3 +228,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {} 2>/dev/null || cat {}'"
 export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} 2>/dev/null | head -200 || ls -la {}'"
+
+# Machine-specific additions (aliases, paths) that should not be shared.
+[[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
